@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tab_dashboard">ড্যাশবোর্ড</string>
+    <string name="tab_ledger">খাতা</string>
+    <string name="tab_analytics">অ্যানালিটিক্স</string>
+    <string name="tab_settings">সেটিংস</string>
+</resources>
