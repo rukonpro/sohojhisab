@@ -14,6 +14,7 @@ sealed interface SettingsIntent : UiEvent {
     data class OnThemeChanged(val theme: String) : SettingsIntent
     data class OnLanguageChanged(val language: String) : SettingsIntent
     data class OnCurrencyChanged(val currency: String) : SettingsIntent
+    data class ExportData(val filePath: String) : SettingsIntent
 }
 
 sealed interface SettingsEffect : UiEffect {

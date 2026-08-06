@@ -1,10 +1,13 @@
 package org.shojhiseb.shared.feature_settings.presentation
 
 import cafe.adriel.voyager.core.model.StateScreenModel
+import kotlinx.coroutines.launch
+import org.shojhiseb.shared.core.export.ExportManager
 import org.shojhiseb.shared.feature_settings.data.UserSettingsRepository
 
 class SettingsScreenModel(
-    private val userSettingsRepository: UserSettingsRepository
+    private val userSettingsRepository: UserSettingsRepository,
+    private val exportManager: ExportManager
 ) : StateScreenModel<SettingsState>(
     SettingsState(
         theme = userSettingsRepository.getTheme(),
@@ -25,6 +28,12 @@ class SettingsScreenModel(
             is SettingsIntent.OnCurrencyChanged -> {
                 userSettingsRepository.setCurrency(intent.currency)
                 mutableState.value = state.value.copy(currency = intent.currency)
+            }
+            is SettingsIntent.ExportData -> {
+                screenModelScope.launch {
+                    val success = exportManager.exportToCsv(intent.filePath)
+                    // Optionally dispatch effect based on success
+                }
             }
         }
     }

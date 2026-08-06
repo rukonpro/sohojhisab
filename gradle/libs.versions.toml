@@ -21,6 +21,7 @@ koin = "4.0.0-RC1"
 sqldelight = "2.0.2"
 multiplatformSettings = "1.1.1"
 napier = "2.7.1"
+okio = "3.9.0"
 coil3 = "3.0.0-rc01"
 leakcanary = "2.14"
 voyager = "1.1.0-beta02"
@@ -55,6 +56,7 @@ sqldelight-native = { module = "app.cash.sqldelight:native-driver", version.ref 
 sqldelight-sqlite = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqldelight" }
 sqldelight-coroutines = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqldelight" }
 multiplatform-settings = { module = "com.russhwolf:multiplatform-settings", version.ref = "multiplatformSettings" }
+okio = { module = "com.squareup.okio:okio", version.ref = "okio" }
 napier = { module = "io.github.aakira:napier", version.ref = "napier" }
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil3" }
 coil-network-ktor = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coil3" }

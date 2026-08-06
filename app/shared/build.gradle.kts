@@ -77,6 +77,9 @@ kotlin {
             
             // Settings
             implementation(libs.multiplatform.settings)
+            
+            // Okio
+            implementation(libs.okio)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

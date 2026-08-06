@@ -28,6 +28,7 @@ import org.shojhiseb.shared.feature_transaction.domain.validation.TransactionVal
 import org.shojhiseb.shared.feature_transaction.presentation.TransactionScreenModel
 
 import com.russhwolf.settings.Settings
+import org.shojhiseb.shared.core.export.ExportManager
 import org.shojhiseb.shared.feature_settings.data.UserSettingsRepository
 import org.shojhiseb.shared.feature_settings.data.UserSettingsRepositoryImpl
 import org.shojhiseb.shared.feature_settings.presentation.SettingsScreenModel
@@ -42,6 +43,7 @@ val repositoryModule = module {
 
 val useCaseModule = module {
     singleOf(::TransactionValidator)
+    singleOf(::ExportManager)
     
     single { GetTransactionsUseCase(get()) }
     single { InsertTransactionUseCase(get(), get()) }

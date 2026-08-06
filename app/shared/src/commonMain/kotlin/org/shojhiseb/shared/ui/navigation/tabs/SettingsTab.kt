@@ -103,6 +103,17 @@ object SettingsTab : Tab {
                     // In a real app, this would open a dropdown or dialog
                 }
             }
+
+            androidx.compose.material3.Button(
+                onClick = { 
+                    // In a real app, you would use a file picker to get the path
+                    val dummyPath = "export.csv" 
+                    screenModel.handleIntent(SettingsIntent.ExportData(dummyPath))
+                },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("Export Data (CSV)")
+            }
         }
     }
 }
