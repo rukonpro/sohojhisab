@@ -26,6 +26,10 @@ import org.shojhiseb.shared.feature_transaction.domain.usecase.InsertTransaction
 import org.shojhiseb.shared.feature_transaction.domain.usecase.TransactionUseCases
 import org.shojhiseb.shared.feature_transaction.domain.validation.TransactionValidator
 import org.shojhiseb.shared.feature_transaction.presentation.TransactionScreenModel
+import org.shojhiseb.shared.feature_dashboard.presentation.DashboardScreenModel
+import org.shojhiseb.shared.feature_analytics.presentation.AnalyticsScreenModel
+import org.shojhiseb.shared.feature_ledger.presentation.LedgerScreenModel
+import org.shojhiseb.shared.core.location.LocationService
 
 import com.russhwolf.settings.Settings
 import org.shojhiseb.shared.core.export.ExportManager
@@ -44,7 +48,7 @@ val repositoryModule = module {
 val useCaseModule = module {
     singleOf(::TransactionValidator)
     singleOf(::ExportManager)
-    singleOf(::org.shojhiseb.shared.core.location.LocationService)
+    singleOf(::LocationService)
     single { GetTransactionsUseCase(get()) }
     single { InsertTransactionUseCase(get(), get()) }
     single { DeleteTransactionUseCase(get()) }
@@ -63,9 +67,9 @@ val useCaseModule = module {
 
 val screenModelModule = module {
     factoryOf(::TransactionScreenModel)
-    factoryOf(::org.shojhiseb.shared.feature_dashboard.presentation.DashboardScreenModel)
-    factoryOf(::org.shojhiseb.shared.feature_analytics.presentation.AnalyticsScreenModel)
-    factoryOf(::org.shojhiseb.shared.feature_ledger.presentation.LedgerScreenModel)
+    factoryOf(::DashboardScreenModel)
+    factoryOf(::AnalyticsScreenModel)
+    factoryOf(::LedgerScreenModel)
     factoryOf(::SettingsScreenModel)
 }
 
