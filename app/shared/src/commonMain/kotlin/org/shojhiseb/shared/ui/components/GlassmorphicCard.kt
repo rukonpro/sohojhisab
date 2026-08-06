@@ -1,5 +1,7 @@
 package org.shojhiseb.shared.ui.components
 
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
@@ -33,6 +35,7 @@ fun GlassmorphicCard(
                 color = borderColor,
                 shape = RoundedCornerShape(cornerRadius)
             )
+            .animateContentSize(animationSpec = tween(durationMillis = 300))
             .padding(padding),
         content = content
     )

@@ -1,9 +1,19 @@
 package org.shojhiseb.shared.ui.navigation.tabs
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.slideInVertically
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -18,6 +28,7 @@ import org.jetbrains.compose.resources.stringResource
 import org.shojhiseb.shared.feature_dashboard.presentation.DashboardScreenModel
 import org.shojhiseb.shared.generated.resources.Res
 import org.shojhiseb.shared.generated.resources.tab_dashboard
+import org.shojhiseb.shared.ui.components.GlassmorphicCard
 
 object DashboardTab : Tab {
 
@@ -51,10 +62,41 @@ object DashboardTab : Tab {
                     Text(text = "Error: ${state.errorMessage}")
                 }
                 else -> {
-                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text(text = stringResource(Res.string.tab_dashboard))
-                        Text(text = "Recent Transactions: ${state.recentTransactions.size}")
-                        // Add more UI to show transactions using LazyColumn in the future
+                    AnimatedVisibility(
+                        visible = !state.isLoading,
+                        enter = fadeIn() + slideInVertically(initialOffsetY = { 50 }),
+                        modifier = Modifier.fillMaxSize()
+                    ) {
+                        LazyColumn(
+                            modifier = Modifier.fillMaxSize().padding(16.dp),
+                            verticalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            item {
+                                GlassmorphicCard(modifier = Modifier.fillMaxWidth()) {
+                                    Column(modifier = Modifier.padding(8.dp)) {
+                                        Text("Total Income: ${state.totalIncome}", style = MaterialTheme.typography.titleMedium)
+                                        Text("Total Expense: ${state.totalExpense}", style = MaterialTheme.typography.titleMedium)
+                                        Text("Current Balance: ${state.balance}", style = MaterialTheme.typography.headlineSmall, color = MaterialTheme.colorScheme.primary)
+                                    }
+                                }
+                            }
+                            
+                            item {
+                                Text("Recent Transactions", style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(vertical = 8.dp))
+                            }
+                            
+                            items(state.recentTransactions) { txn ->
+                                GlassmorphicCard(modifier = Modifier.fillMaxWidth()) {
+                                    Row(modifier = Modifier.fillMaxWidth().padding(8.dp), horizontalArrangement = Arrangement.SpaceBetween) {
+                                        Column {
+                                            Text(text = "Amount: ${txn.amount}")
+                                            Text(text = "Type: ${txn.type}")
+                                        }
+                                        Text(text = txn.date.toString())
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }

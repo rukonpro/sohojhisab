@@ -80,21 +80,27 @@ object LedgerTab : Tab {
             } else {
                 val listToDisplay = if (state.selectedTab == 0) state.toPayLedgers else state.toReceiveLedgers
                 
-                LazyColumn(
-                    modifier = Modifier.fillMaxSize().padding(16.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                androidx.compose.animation.AnimatedVisibility(
+                    visible = true,
+                    enter = androidx.compose.animation.fadeIn() + androidx.compose.animation.slideInVertically(initialOffsetY = { 50 }),
+                    modifier = Modifier.fillMaxSize()
                 ) {
-                    if (listToDisplay.isEmpty()) {
-                        item {
-                            Text("No ledgers found.", modifier = Modifier.padding(16.dp))
+                    LazyColumn(
+                        modifier = Modifier.fillMaxSize().padding(16.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        if (listToDisplay.isEmpty()) {
+                            item {
+                                Text("No ledgers found.", modifier = Modifier.padding(16.dp))
+                            }
                         }
-                    }
-                    items(listToDisplay) { ledger ->
-                        GlassmorphicCard(modifier = Modifier.fillMaxWidth()) {
-                            Column(modifier = Modifier.fillMaxWidth()) {
-                                Text(text = ledger.personName, style = androidx.compose.material3.MaterialTheme.typography.titleMedium)
-                                Text(text = "Amount: ${ledger.amount}")
-                                Text(text = "Status: ${ledger.status}")
+                        items(listToDisplay) { ledger ->
+                            GlassmorphicCard(modifier = Modifier.fillMaxWidth()) {
+                                Column(modifier = Modifier.fillMaxWidth()) {
+                                    Text(text = ledger.personName, style = androidx.compose.material3.MaterialTheme.typography.titleMedium)
+                                    Text(text = "Amount: ${ledger.amount}")
+                                    Text(text = "Status: ${ledger.status}")
+                                }
                             }
                         }
                     }
