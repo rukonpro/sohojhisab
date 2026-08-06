@@ -82,6 +82,31 @@ object DashboardTab : Tab {
                             }
                             
                             item {
+                                Text("Quick Templates", style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(vertical = 8.dp))
+                                androidx.compose.foundation.lazy.LazyRow(
+                                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                                    modifier = Modifier.fillMaxWidth()
+                                ) {
+                                    item {
+                                        androidx.compose.material3.ElevatedSuggestionChip(
+                                            onClick = {
+                                                screenModel.addQuickTransaction(50.0, "Coffee", org.shojhiseb.shared.feature_transaction.domain.models.TransactionType.EXPENSE)
+                                            },
+                                            label = { Text("☕ Coffee - 50") }
+                                        )
+                                    }
+                                    item {
+                                        androidx.compose.material3.ElevatedSuggestionChip(
+                                            onClick = {
+                                                screenModel.addQuickTransaction(30.0, "Transport", org.shojhiseb.shared.feature_transaction.domain.models.TransactionType.EXPENSE)
+                                            },
+                                            label = { Text("🚌 Transport - 30") }
+                                        )
+                                    }
+                                }
+                            }
+                            
+                            item {
                                 Text("Recent Transactions", style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(vertical = 8.dp))
                             }
                             

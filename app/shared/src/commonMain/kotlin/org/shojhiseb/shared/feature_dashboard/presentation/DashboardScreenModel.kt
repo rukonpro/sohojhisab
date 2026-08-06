@@ -47,4 +47,18 @@ class DashboardScreenModel(
             }
         }
     }
+
+    fun addQuickTransaction(amount: Double, note: String, type: org.shojhiseb.shared.feature_transaction.domain.models.TransactionType) {
+        screenModelScope.launch {
+            val transaction = Transaction(
+                id = 0,
+                amount = amount,
+                note = note,
+                type = type,
+                categoryId = 1, // Default category for quick templates
+                date = kotlinx.datetime.Clock.System.now().toEpochMilliseconds()
+            )
+            transactionUseCases.insertTransaction(transaction)
+        }
+    }
 }
