@@ -27,7 +27,14 @@ import org.shojhiseb.shared.feature_transaction.domain.usecase.TransactionUseCas
 import org.shojhiseb.shared.feature_transaction.domain.validation.TransactionValidator
 import org.shojhiseb.shared.feature_transaction.presentation.TransactionScreenModel
 
+import com.russhwolf.settings.Settings
+import org.shojhiseb.shared.feature_settings.data.UserSettingsRepository
+import org.shojhiseb.shared.feature_settings.data.UserSettingsRepositoryImpl
+import org.shojhiseb.shared.feature_settings.presentation.SettingsScreenModel
+
 val repositoryModule = module {
+    single<Settings> { Settings() }
+    singleOf(::UserSettingsRepositoryImpl) bind UserSettingsRepository::class
     singleOf(::TransactionRepositoryImpl) bind TransactionRepository::class
     singleOf(::CategoryRepositoryImpl) bind CategoryRepository::class
     singleOf(::LedgerRepositoryImpl) bind LedgerRepository::class
@@ -57,6 +64,7 @@ val screenModelModule = module {
     factoryOf(::org.shojhiseb.shared.feature_dashboard.presentation.DashboardScreenModel)
     factoryOf(::org.shojhiseb.shared.feature_analytics.presentation.AnalyticsScreenModel)
     factoryOf(::org.shojhiseb.shared.feature_ledger.presentation.LedgerScreenModel)
+    factoryOf(::SettingsScreenModel)
 }
 
 fun initKoin(appModule: Module) {
