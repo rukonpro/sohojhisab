@@ -21,13 +21,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import org.jetbrains.compose.resources.stringResource
 import org.shojhiseb.shared.feature_dashboard.presentation.DashboardScreenModel
-import org.shojhiseb.shared.generated.resources.Res
-import org.shojhiseb.shared.generated.resources.tab_dashboard
+import shojhiseb.app.shared.generated.resources.Res
+import shojhiseb.app.shared.generated.resources.tab_dashboard
 import org.shojhiseb.shared.ui.components.GlassmorphicCard
 
 object DashboardTab : Tab {

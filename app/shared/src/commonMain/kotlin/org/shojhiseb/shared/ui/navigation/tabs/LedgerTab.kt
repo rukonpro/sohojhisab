@@ -23,8 +23,8 @@ import cafe.adriel.voyager.navigator.tab.TabOptions
 import org.jetbrains.compose.resources.stringResource
 import org.shojhiseb.shared.feature_ledger.presentation.LedgerIntent
 import org.shojhiseb.shared.feature_ledger.presentation.LedgerScreenModel
-import org.shojhiseb.shared.generated.resources.Res
-import org.shojhiseb.shared.generated.resources.tab_ledger
+import shojhiseb.app.shared.generated.resources.Res
+import shojhiseb.app.shared.generated.resources.tab_ledger
 import org.shojhiseb.shared.ui.components.GlassmorphicCard
 
 object LedgerTab : Tab {

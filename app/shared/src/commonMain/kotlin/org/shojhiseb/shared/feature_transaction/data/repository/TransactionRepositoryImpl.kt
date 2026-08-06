@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import org.shojhiseb.shared.core.resource.Resource
 import org.shojhiseb.shared.database.ShojhisebDatabase
-import org.shojhiseb.shared.feature_transaction.data.mapper.toDomain
+import org.shojhiseb.shared.feature_transaction.data.mapper.toTransactionDomain
 import org.shojhiseb.shared.feature_transaction.domain.models.Transaction
 import org.shojhiseb.shared.feature_transaction.domain.repository.TransactionRepository
 
@@ -22,7 +22,7 @@ class TransactionRepositoryImpl(
             .asFlow()
             .mapToList(Dispatchers.Default) // Using Default instead of IO in KMP common
             .map { entities ->
-                Resource.Success(entities.map { it.toDomain() }) as Resource<List<Transaction>>
+                Resource.Success(entities.map { it.toTransactionDomain() }) as Resource<List<Transaction>>
             }
             .catch { e ->
                 emit(Resource.Error("Failed to fetch transactions", e))

@@ -2,6 +2,7 @@ package org.shojhiseb.shared.ui.navigation
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -39,7 +40,7 @@ fun MainScreen() {
 }
 
 @Composable
-private fun TabNavigationItem(tab: Tab) {
+private fun RowScope.TabNavigationItem(tab: Tab) {
     val tabNavigator = LocalTabNavigator.current
 
     NavigationBarItem(

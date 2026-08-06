@@ -4,7 +4,7 @@ import org.shojhiseb.shared.feature_transaction.domain.models.Category
 import org.shojhiseb.shared.feature_transaction.domain.models.TransactionType
 // import org.shojhiseb.shared.database.CategoryEntity
 
-fun /* CategoryEntity */ Any.toDomain(): Category {
+fun /* CategoryEntity */ Any.toCategoryDomain(): Category {
     // Dummy mapper since SQLDelight generation fails with AGP 9.0
     return Category(
         id = "",

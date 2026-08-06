@@ -5,7 +5,7 @@ import cafe.adriel.voyager.core.model.screenModelScope
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.shojhiseb.shared.core.resource.Resource
-import org.shojhiseb.shared.feature_ledger.domain.models.LedgerType
+
 import org.shojhiseb.shared.feature_ledger.domain.usecase.LedgerUseCases
 
 class LedgerScreenModel(
@@ -31,8 +31,8 @@ class LedgerScreenModel(
                 when (resource) {
                     is Resource.Success -> {
                         val allLedgers = resource.data
-                        val toPay = allLedgers.filter { it.type == LedgerType.TO_PAY }
-                        val toReceive = allLedgers.filter { it.type == LedgerType.TO_RECEIVE }
+                        val toPay = allLedgers.filter { it.amount < 0 }
+                        val toReceive = allLedgers.filter { it.amount >= 0 }
                         
                         mutableState.value = state.value.copy(
                             toPayLedgers = toPay,

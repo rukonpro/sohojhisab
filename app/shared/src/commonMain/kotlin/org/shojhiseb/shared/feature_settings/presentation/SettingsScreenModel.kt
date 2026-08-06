@@ -1,6 +1,7 @@
 package org.shojhiseb.shared.feature_settings.presentation
 
 import cafe.adriel.voyager.core.model.StateScreenModel
+import cafe.adriel.voyager.core.model.screenModelScope
 import kotlinx.coroutines.launch
 import org.shojhiseb.shared.core.export.ExportManager
 import org.shojhiseb.shared.feature_settings.data.UserSettingsRepository

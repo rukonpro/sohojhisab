@@ -22,8 +22,8 @@ import cafe.adriel.voyager.navigator.tab.TabOptions
 import org.jetbrains.compose.resources.stringResource
 import org.shojhiseb.shared.feature_settings.presentation.SettingsIntent
 import org.shojhiseb.shared.feature_settings.presentation.SettingsScreenModel
-import org.shojhiseb.shared.generated.resources.Res
-import org.shojhiseb.shared.generated.resources.tab_settings
+import shojhiseb.app.shared.generated.resources.Res
+import shojhiseb.app.shared.generated.resources.tab_settings
 import org.shojhiseb.shared.ui.components.GlassmorphicCard
 
 object SettingsTab : Tab {

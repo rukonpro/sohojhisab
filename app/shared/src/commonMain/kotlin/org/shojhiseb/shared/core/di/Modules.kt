@@ -38,7 +38,7 @@ import org.shojhiseb.shared.feature_settings.data.UserSettingsRepositoryImpl
 import org.shojhiseb.shared.feature_settings.presentation.SettingsScreenModel
 
 val repositoryModule = module {
-    single<Settings> { Settings() }
+    // single<Settings> { Settings() } // Must be provided from platform module
     singleOf(::UserSettingsRepositoryImpl) bind UserSettingsRepository::class
     singleOf(::TransactionRepositoryImpl) bind TransactionRepository::class
     singleOf(::CategoryRepositoryImpl) bind CategoryRepository::class

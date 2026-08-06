@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import org.shojhiseb.shared.core.resource.Resource
 import org.shojhiseb.shared.database.ShojhisebDatabase
-import org.shojhiseb.shared.feature_transaction.data.mapper.toDomain
+import org.shojhiseb.shared.feature_transaction.data.mapper.toCategoryDomain
 import org.shojhiseb.shared.feature_transaction.domain.models.Category
 import org.shojhiseb.shared.feature_transaction.domain.repository.CategoryRepository
 
@@ -22,7 +22,7 @@ class CategoryRepositoryImpl(
             .asFlow()
             .mapToList(Dispatchers.Default)
             .map { entities ->
-                Resource.Success(entities.map { it.toDomain() }) as Resource<List<Category>>
+                Resource.Success(entities.map { it.toCategoryDomain() }) as Resource<List<Category>>
             }
             .catch { e ->
                 emit(Resource.Error("Failed to fetch categories", e))

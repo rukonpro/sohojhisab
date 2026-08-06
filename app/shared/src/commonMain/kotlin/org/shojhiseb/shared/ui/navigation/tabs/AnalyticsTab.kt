@@ -20,8 +20,8 @@ import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import org.jetbrains.compose.resources.stringResource
 import org.shojhiseb.shared.feature_analytics.presentation.AnalyticsScreenModel
-import org.shojhiseb.shared.generated.resources.Res
-import org.shojhiseb.shared.generated.resources.tab_analytics
+import shojhiseb.app.shared.generated.resources.Res
+import shojhiseb.app.shared.generated.resources.tab_analytics
 import org.shojhiseb.shared.ui.components.charts.CustomBarChart
 import org.shojhiseb.shared.ui.components.charts.CustomPieChart
 
