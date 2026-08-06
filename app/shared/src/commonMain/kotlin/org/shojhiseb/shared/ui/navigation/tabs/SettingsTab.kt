@@ -16,7 +16,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import cafe.adriel.voyager.koin.koinScreenModel
+import cafe.adriel.voyager.koin.getScreenModel
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import org.jetbrains.compose.resources.stringResource
@@ -43,7 +43,7 @@ object SettingsTab : Tab {
 
     @Composable
     override fun Content() {
-        val screenModel = koinScreenModel<SettingsScreenModel>()
+        val screenModel = getScreenModel<SettingsScreenModel>()
         val state by screenModel.state.collectAsState()
 
         Column(
