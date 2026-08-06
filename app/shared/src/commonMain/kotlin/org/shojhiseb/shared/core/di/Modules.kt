@@ -55,6 +55,7 @@ val useCaseModule = module {
 val screenModelModule = module {
     factoryOf(::TransactionScreenModel)
     factoryOf(::org.shojhiseb.shared.feature_dashboard.presentation.DashboardScreenModel)
+    factoryOf(::org.shojhiseb.shared.feature_analytics.presentation.AnalyticsScreenModel)
 }
 
 fun initKoin(appModule: Module) {
