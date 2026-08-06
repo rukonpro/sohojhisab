@@ -1,0 +1,22 @@
+CREATE TABLE transactionEntity (
+    id TEXT NOT NULL PRIMARY KEY,
+    type TEXT NOT NULL,
+    amount REAL NOT NULL,
+    categoryId TEXT NOT NULL,
+    note TEXT,
+    date INTEGER NOT NULL,
+    created_at INTEGER NOT NULL,
+    updated_at INTEGER NOT NULL,
+    deleted_at INTEGER,
+    FOREIGN KEY(categoryId) REFERENCES categoryEntity(id)
+);
+
+selectAll:
+SELECT * FROM transactionEntity WHERE deleted_at IS NULL ORDER BY date DESC;
+
+insertTransaction:
+INSERT OR REPLACE INTO transactionEntity(id, type, amount, categoryId, note, date, created_at, updated_at, deleted_at)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+softDeleteTransaction:
+UPDATE transactionEntity SET deleted_at = ? WHERE id = ?;

@@ -1,0 +1,36 @@
+CREATE TABLE categoryEntity (
+    id TEXT NOT NULL PRIMARY KEY,
+    nameResId TEXT NOT NULL,
+    type TEXT NOT NULL,
+    icon TEXT NOT NULL,
+    color TEXT NOT NULL,
+    priority INTEGER NOT NULL,
+    isDefault INTEGER NOT NULL,
+    created_at INTEGER NOT NULL,
+    updated_at INTEGER NOT NULL,
+    deleted_at INTEGER
+);
+
+CREATE TABLE transactionEntity (
+    id TEXT NOT NULL PRIMARY KEY,
+    type TEXT NOT NULL,
+    amount REAL NOT NULL,
+    categoryId TEXT NOT NULL,
+    note TEXT,
+    date INTEGER NOT NULL,
+    created_at INTEGER NOT NULL,
+    updated_at INTEGER NOT NULL,
+    deleted_at INTEGER,
+    FOREIGN KEY(categoryId) REFERENCES categoryEntity(id)
+);
+
+CREATE TABLE ledgerEntity (
+    id TEXT NOT NULL PRIMARY KEY,
+    personName TEXT NOT NULL,
+    amount REAL NOT NULL,
+    status TEXT NOT NULL,
+    dueDate INTEGER,
+    created_at INTEGER NOT NULL,
+    updated_at INTEGER NOT NULL,
+    deleted_at INTEGER
+);

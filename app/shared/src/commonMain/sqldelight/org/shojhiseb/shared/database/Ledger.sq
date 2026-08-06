@@ -1,0 +1,20 @@
+CREATE TABLE ledgerEntity (
+    id TEXT NOT NULL PRIMARY KEY,
+    personName TEXT NOT NULL,
+    amount REAL NOT NULL,
+    status TEXT NOT NULL,
+    dueDate INTEGER,
+    created_at INTEGER NOT NULL,
+    updated_at INTEGER NOT NULL,
+    deleted_at INTEGER
+);
+
+selectAll:
+SELECT * FROM ledgerEntity WHERE deleted_at IS NULL ORDER BY created_at DESC;
+
+insertLedger:
+INSERT OR REPLACE INTO ledgerEntity(id, personName, amount, status, dueDate, created_at, updated_at, deleted_at)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+
+softDeleteLedger:
+UPDATE ledgerEntity SET deleted_at = ? WHERE id = ?;
