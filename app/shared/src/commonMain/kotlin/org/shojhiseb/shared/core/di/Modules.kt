@@ -44,7 +44,7 @@ val repositoryModule = module {
 val useCaseModule = module {
     singleOf(::TransactionValidator)
     singleOf(::ExportManager)
-    
+    singleOf(::org.shojhiseb.shared.core.location.LocationService)
     single { GetTransactionsUseCase(get()) }
     single { InsertTransactionUseCase(get(), get()) }
     single { DeleteTransactionUseCase(get()) }
